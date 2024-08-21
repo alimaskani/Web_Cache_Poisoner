@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  html_server:
+    build:
+      context: ./html_server
+    container_name: html_server
+    ports:
+      - "8080:80"
+
+  cache_server:
+    build:
+      context: ./cache_server
+    container_name: cache_server
+    ports:
+      - "80:80"
+    depends_on:
+      - html_server
